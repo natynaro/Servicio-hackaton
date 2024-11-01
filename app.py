@@ -72,7 +72,7 @@ def get_or_create_null_provider(user_id):
         return None
 
 # Obtener Usuario por ID
-@app.route('/users/<string:id>', methods=['GET'])
+@app.route('/users/{id}', methods=['GET'])
 def obtener_usuario_por_id(id):
     try:
         cursor = conexion.cursor(dictionary=True)
@@ -137,7 +137,7 @@ def crear_proveedor():
         return jsonify({'error': str(e)}), 500
 
 # Eliminar un proveedor
-@app.route('/providers/<int:id>', methods=['DELETE'])
+@app.route('/providers/{id}', methods=['DELETE'])
 def eliminar_proveedor(id):
     user_id, error_response, status_code = obtener_usuario()
     if error_response:
@@ -247,7 +247,7 @@ def obtener_productos():
         return jsonify({'error': str(e)}), 500
 
 # Obtener un producto por ID y Usuario
-@app.route('/productos/<int:id>', methods=['GET'])
+@app.route('/productos/{id}', methods=['GET'])
 def obtener_producto(id):
     user_id, error_response, status_code = obtener_usuario()
     if error_response:
@@ -270,7 +270,7 @@ def obtener_producto(id):
         return jsonify({'error': str(e)}), 500
 
 # Actualizar Producto
-@app.route('/productos/<int:id>', methods=['PUT'])
+@app.route('/productos/{id}', methods=['PUT'])
 def actualizar_producto(id):
     user_id, error_response, status_code = obtener_usuario()
     if error_response:
@@ -324,7 +324,7 @@ def actualizar_producto(id):
         return jsonify({'error': str(e)}), 500
 
 # Eliminar Producto (establecer enable a False)
-@app.route('/productos/<int:id>', methods=['DELETE'])
+@app.route('/productos/{id}', methods=['DELETE'])
 def eliminar_producto(id):
     user_id, error_response, status_code = obtener_usuario()
     if error_response:
@@ -476,7 +476,7 @@ def obtener_compras():
         return jsonify({'error': str(e)}), 500
 
 # Obtener una compra por ID y Usuario
-@app.route('/compras/<int:id>', methods=['GET'])
+@app.route('/compras/{id}', methods=['GET'])
 def obtener_compra(id):
     user_id, error_response, status_code = obtener_usuario()
     if error_response:
